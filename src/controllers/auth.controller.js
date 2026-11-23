@@ -8,9 +8,7 @@ const passwordHash = bcrypt.hashSync(AUTH_USER.plainPassword, 10);
 function login(req, res) {
   const { username, password } = req.body || {};
 
-  if (!username || !password) {
-    return res.status(400).json({ message: 'Usuario y contraseña son requeridos' });
-  }
+
 
   const isUsernameValid = username === AUTH_USER.username;
   const isPasswordValid = isUsernameValid && bcrypt.compareSync(password, passwordHash);
